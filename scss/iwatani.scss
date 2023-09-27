@@ -1,1059 +1,1054 @@
-@use 'storage' as *;
+@use "storage" as *;
 
-@font-face{
-
-
-    font-family: "logo";
-    src: url("../font/Combo-Regular.ttf") format("truetype");
+@font-face {
+  font-family: "logo";
+  src: url("../font/Combo-Regular.ttf") format("truetype");
 }
 
-@font-face{
-    font-family:"japanese";
-    src: url("../font/NotoSerifJP-Regular.otf") format("opentype");
+@font-face {
+  font-family: "japanese";
+  src: url("../font/NotoSerifJP-Regular.otf") format("opentype");
 }
 
-@mixin rain1 {animation: hero3 4s ease-out 12s forwards;}
-@mixin rain2{animation: hero1 5s ease-out 12s forwards;}
-@mixin rain3 {animation: hero2 6s ease-out 12s forwards;}
-
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-size: 10px;  
-    font-family: "logo";
+@mixin rain1 {
+  animation: hero3 4s ease-out 12s forwards;
+}
+@mixin rain2 {
+  animation: hero1 5s ease-out 12s forwards;
+}
+@mixin rain3 {
+  animation: hero2 6s ease-out 12s forwards;
 }
 
-body{
-    position: relative;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 10px;
+  font-family: "logo";
+  list-style: none;
 }
 
-header{
-    position: fixed;
-    width: 100%;
-    height: 150px;
-    z-index: 2;
-    animation: logo-appear 5s forwards 6s, logo-move 3s forwards 10s;
-    opacity: 0;
-    .logo{
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 50%;
-        margin-top: 3%;
-        font-size: 5vw;
-        color: white;
-    }
-
-    
-
-    
-
-    
+body {
+  position: relative;
 }
 
-
-
-main{
-    .hero{
-        position: relative;
-        
-        height: 713px;
-        background-size: cover;
-        // background-color: rgb(0, 0, 0, 0.7);
-        overflow: hidden;
-
-        .background{
-            content:"";
-            background-image: url("../picture/catsle.png");
-            
-            position: fixed;
-            z-index: -1;
-            width: 100%;
-            height: 713px;
-            &::after{
-                content:"";
-                background-color: rgb(0, 0, 0, 0.7);
-                
-                position: absolute;
-                z-index: -1;
-                width: 100%;
-                height: 713px;  
-            }
-        }
-
-        .load-text{
-            color: white;
-            font-size: 4rem;
-            width: 50%;
-            height: 50%;
-            position: absolute;
-            left: 32%;
-            top: 40%;
-            opacity: 0;
-            animation: load-text 8s;
-
-        }
-
-        // &::before{
-        //     content:"";
-        //     background-image: url("../picture/catsle.png");
-            
-        //     position: absolute;
-        //     z-index: -1;
-        //     width: 100%;
-        //     height: 713px;
-           
-        // }
-        
-        .picture-flow{
-            display: flex;
-            width: 4000px;
-            position: absolute;
-            
-            .flow1{
-                width: 2000px;
-                height: 648px;
-               
-                animation: wallflow1 100s infinite linear -50s both;
-                flex-grow: 1;
-                display: grid;
-                grid-template-columns: repeat(19, 1fr);
-                grid-template-rows:repeat(7,1fr);
-                
-                .picture1{
-                    grid-column: 2/8;
-                    grid-row: 3/6;
-                    background-image: url("../picture/hero1.jpg");
-                    background-size: cover;
-                    @include rain1;
-                    opacity: 0;
-                }
-                .picture2{
-                    grid-column: 10/13;
-                    grid-row: 4/6;
-                    background-image: url("../picture/hero3.png");
-                    background-size: cover;
-                    @include rain1;
-                    opacity: 0;
-                }
-                .picture3{
-                    grid-column: 12/16;
-                    grid-row: 1/3;
-                    background-image: url("../picture/hero4.png");
-                    background-size: cover;
-                    @include rain1;
-                    opacity: 0;
-                }
-                .picture4{
-                    grid-column: 15/19;
-                    grid-row: 5/8;
-                    background-image: url("../picture/hero5.png");
-                    background-size: cover;
-                    @include rain1;
-                    opacity: 0;
-                }
-                
-                
-            }
-            
-            .flow2{
-                width: 2000px;
-                height: 648px;
-                
-                
-                flex-grow: 1;
-                animation: wallflow2 100s infinite linear  both;
-                display: grid;
-                grid-template-columns: repeat(19, 1fr);
-                grid-template-rows:repeat(7,1fr);
-                .picture1{
-                    grid-column: 2/7;
-                    grid-row: 2/5;
-                    background-image: url("../picture/hero6.png");
-                    background-size: cover;
-                    @include rain1;
-                    opacity: 0;
-                }
-                .picture2{
-                    grid-column: 8/12;
-                    grid-row: 5/7;
-                    background-image: url("../picture/hero7.png");
-                    background-size: cover;
-                    @include rain1;
-                    opacity: 0;
-                }
-                .picture3{
-                    grid-column: 12/16;
-                    grid-row: 1/3;
-                    background-image: url("../picture/hero8.png");
-                    background-size: cover;
-                    @include rain1;
-                    opacity: 0;
-                }
-                .picture4{
-                    grid-column: 16/19;
-                    grid-row: 5/7;
-                    background-image: url("../picture/hero9.png");
-                    background-size: cover;
-                    @include rain1;
-                    opacity: 0;
-                }
-            }
-        }
-
-        .text-flow1{
-            color: rgb(255, 255, 255,0.9);
-            position: absolute;
-            display: flex;
-            width: 4000px;
-            .flow1{
-                width: 2000px;
-                height: 648px;
-                animation: wallflow1 55s infinite linear -27.5s both;
-                flex-grow: 1;
-                overflow: hidden;
-                align-items: center;
-                display: grid;
-                grid-template-columns: repeat(19, 1fr);
-                grid-template-rows:repeat(7,1fr);
-                .text1{
-                    font-size: 2rem;
-                    grid-column: 2/8;
-                    grid-row: 3/4;
-                    @include rain2;
-                    opacity: 0;
-                }
-                .text2{
-                    font-size: 2rem;
-                    grid-column: 6/11;
-                    grid-row: 7/8;
-                    @include rain2;
-                    opacity: 0;
-                }
-                .text3{
-                    font-size: 2rem;
-                    grid-column: 13/18;
-                    grid-row: 2/3;
-                    @include rain2;
-                    opacity: 0;
-                }
-                .text4{
-                    font-size: 2rem;
-                    grid-column: 9/19;
-                    grid-row: 4/5;
-                    @include rain2;
-                    opacity: 0;
-                }
-                .text5{
-                    font-size: 2rem;
-                    grid-column: 15/19;
-                    grid-row: 6;
-                    @include rain2;
-                    opacity: 0;
-                }
-                
-            }
-
-            .flow2{
-                width: 2000px;
-                height: 648px;
-                flex-grow: 1;
-                animation: wallflow2 55s infinite linear  both;
-                display: grid;
-                grid-template-columns: repeat(19, 1fr);
-                grid-template-rows:repeat(7,1fr);
-                
-
-                .text1{
-                    font-size: 2rem;
-                    grid-column: 2/9;
-                    grid-row: 3/4;
-                    @include rain2;
-                    opacity: 0;
-                }
-                .text2{
-                    font-size: 2rem;
-                    grid-column: 4/10;
-                    grid-row: 6/7;
-                    opacity: 0;
-                    @include rain2;
-                }
-                .text3{
-                    font-size: 2rem;
-                    grid-column: 13/19;
-                    grid-row: 2/3;
-                    opacity: 0;
-                    @include rain2;
-                }
-                .text4{
-                    font-size: 2rem;
-                    grid-column: 13/16;
-                    grid-row: 6/5;
-                    opacity: 0;
-                    @include rain2;
-                }
-                .text5{
-                    font-size: 2rem;
-                    grid-column: 14/19;
-                    grid-row: 7/8;
-                    opacity: 0;
-                    @include rain2;
-                }
-            }
-
-
-        }
-
-        .text-flow2{
-            color: rgb(255, 255, 255);
-            position: absolute;
-            display: flex;
-            width: 4000px;
-            font-family: "japanese";
-            
-            .flow1{
-                width: 2000px;
-                height: 648px;
-                animation: wallflow1 80s infinite linear -40s both;
-                flex-grow: 1;
-                align-items: center;
-                display: grid;
-                grid-template-columns: repeat(7, 1fr);
-                grid-template-rows:repeat(19,1fr);
-                -ms-writing-mode: tb-rl;
-                writing-mode: vertical-rl;
-                .text1{
-                    font-size: 3rem;
-                    grid-row: 2/3;
-                    grid-column: 2/8;
-                    font-family: "japanese";
-                    @include rain3;
-                    opacity: 0;
-                }
-                .text2{
-                    font-size: 2.5rem;
-                    grid-row: 5/6;
-                    grid-column: 1/7;
-                    font-family: "japanese";
-                    @include rain3;
-                    opacity: 0;
-                }
-                .text3{
-                    font-size: 4.5rem;
-                    grid-row: 9/10;
-                    grid-column: 3/8;
-                    font-family: "japanese";
-                    @include rain3;
-                    opacity: 0;
-                }
-                .text4{
-                    font-size: 3rem;
-                    grid-row: 13/14;
-                    grid-column: 2/8;
-                    font-family: "japanese";
-                    @include rain3;
-                    opacity: 0;
-                }
-                .text5{
-                    font-size: 3rem;
-                    grid-row: 17/18;
-                    grid-column: 1/8;
-                    font-family: "japanese";
-                    @include rain3;
-                    opacity: 0;
-
-                }
-            }
-
-            .flow2{
-                width: 2000px;
-                height: 648px;
-                animation: wallflow2 80s infinite linear both;
-                flex-grow: 1;
-                align-items: center;
-                display: grid;
-                grid-template-columns: repeat(7, 1fr);
-                grid-template-rows:repeat(19,1fr);
-                -ms-writing-mode: tb-rl;
-                writing-mode: vertical-rl;
-                .text1{
-                    font-size: 3.5rem;
-                    grid-row: 2/3;
-                    grid-column: 3/8;
-                    font-family: "japanese";
-                    @include rain3;
-                    opacity: 0;
-                }
-                .text2{
-                    font-size: 4rem;
-                    grid-row: 5/6;
-                    grid-column: 1/7;
-                    font-family: "japanese";
-                    @include rain3;
-                    opacity: 0;
-                }
-                .text3{
-                    font-size: 3rem;
-                    grid-row: 9/10;
-                    grid-column: 2/8;
-                    font-family: "japanese";
-                    @include rain3;
-                    opacity: 0;
-                }
-                .text4{
-                    font-size: 3rem;
-                    grid-row: 13/14;
-                    grid-column: 1/8;
-                    font-family: "japanese";
-                    @include rain3;
-                    opacity: 0;
-                }
-                .text5{
-                    font-size: 3.5rem;
-                    grid-row: 17/18;
-                    grid-column: 3/8;
-                    font-family: "japanese";
-                    @include rain3;
-                    opacity: 0;
-                }
-            }
-
-        }
-    }
-
-    .chara-navi{
-        width: 100%;
-        
-        
-        display: flex;
-        flex-wrap: wrap;
-        @media screen and ( max-width:764px){
-            margin-bottom: 100px;
-        }
-        .chara1{
-            opacity: 0;
-            width: 100%;
-            height: 600px; 
-           
-        }
-        .chara2{
-            width: 100%;
-            height: 600px; 
-            opacity: 0;
-        }
-        .chara3{
-            width: 100%;
-            height: 600px; 
-            opacity: 0;
-        }
-        .chara4{
-            width: 100%;
-            height: 600px; 
-            opacity: 0;
-        }
-        .chara5{
-            width: 100%;
-            height: 600px; 
-            opacity: 0;
-        }
-
-        div.scroll{
-            @media screen and ( max-width:764px){
-                height: 300px!important;
-            }
-        }
-        .chara1.scroll{
-            display: flex;
-            width: 100%;
-            height: 600px;
-            animation: comeup 1.5s forwards;
-            color: white;
-           
-            .chara-info{
-                
-                @include chara-info;
-                
-            }
-            .chara-picture{
-                
-                width: 50%;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                position: relative;
-                .picture{
-                    position: absolute;
-                    background-image: url("../picture/howl.png");
-                    background-size: cover;
-                    background-position: center;
-                    width: 50%;
-                    padding-top: 50%;
-                    z-index: 2;
-
-                }
-
-                @include each-chara;
-            }
-        }
-        .chara2.scroll{
-            display: flex;
-            width: 100%;
-            height: 600px;
-            animation: comeup 1.5s forwards;
-            .chara-info{
-                @include chara-info;
-                
-            }
-            .chara-picture{
-                width: 50%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                position: relative;
-                .picture{
-                    
-                    background-image: url("../picture/sophie.png");
-                    background-size: cover;
-                    background-position: center;
-                    width: 50%;
-                    padding-top: 50%;
-                    position: absolute;
-                    z-index: 2;
-                }
-
-                @include each-chara;
-            }
-        }
-        .chara3.scroll{
-            display: flex;
-            width: 100%;
-            height: 600px;
-            animation: comeup 1.5s forwards;
-            
-            .chara-info{
-                @include chara-info;
-                
-            }
-            .chara-picture{
-                width: 50%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                position: relative;
-                .picture{
-                    
-                    background-image: url("../picture/fire.png");
-                    background-size: cover;
-                    background-position: center;
-                    width: 50%;
-                    padding-top: 50%;
-                    z-index: 22;
-                }
-
-                @include each-chara;
-                
-            }
-        }
-        .chara4.scroll{
-            display: flex;
-            width: 100%;
-            height: 600px;
-            animation: comeup 1.5s forwards;
-            .chara-info{
-                @include chara-info;
-                
-            }
-            .chara-picture{
-                width: 50%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                position: relative;
-                .picture{
-                    
-                    background-image: url("../picture/malc.png");
-                    background-position: center;
-                    background-size: cover;
-                    width: 50%;
-                    padding-top: 50%;
-                    z-index: 2;
-                }
-
-                @include each-chara;
-                
-            }
-        }
-
-        .chara5.scroll{
-            display: flex;
-            width: 100%;
-            height: 600px;
-            animation: comeup 1.5s forwards;
-            .chara-info{
-                @include chara-info;
-                
-            }
-            .chara-picture{
-                width: 50%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                position: relative;
-                .picture{
-                    
-                    background-image: url("../picture/hero5.png");
-                    background-size: cover;
-                    background-position: center;
-                    width: 50%;
-                    padding-top: 50%;
-                    z-index: 2;
-                }
-
-                @include each-chara;
-                
-            }
-        }
-    }
-    
-    .produce{
-       
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        @media screen and (min-width:375px) and ( max-width:768px){
-            .box{
-                width: 50%!important;
-                .font{
-                    .font-title{
-                        font-size: 4vw!important;
-                    }
-                    .font-detail{
-                        font-size: 2vw!important;
-                    }
-                }
-                
-            }
-        }
-        @media screen and ( max-width:374px){
-            .box{
-                width: 100%!important;
-                
-                .font{
-                    .font-title{
-                        font-size: 8vw!important;
-                    }
-                    .font-detail{
-                        font-size: 5vw!important;
-                    }
-                }
-            }
-        }
-        
-        .box{
-            width: 30%;
-            position: relative;
-            
-            margin-bottom: 40px;
-            &::before{
-            content: "";
-            padding: 50%;
-            display: block;
-
-            }
-
-            .picture1{
-                background-image: url("../picture/box11.png");
-                @include picture;
-            }
-            .picture2{
-                background-image: url("../picture/box12.png");
-                @include picture;
-            }
-            .picture3{
-                background-image: url("../picture/box13.png");
-                @include picture;
-            }
-            .picture4{
-                background-image: url("../picture/box14.png");
-                @include picture;
-            }
-            .picture5{
-                background-image: url("../picture/box15.png");
-                @include picture;
-            }
-            .picture6{
-                background-image: url("../picture/box16.png");
-    
-                @include picture;
-            }
-
-            .font{
-                color: white;
-                position: absolute;
-                width: 50%;
-                top: 7%;
-                right: 10%;
-                overflow: hidden;
-                .font-title{
-                    display: flex;
-                    justify-content: center;
-                    font-size: 2.5vw;
-                }
-                .font-detail{
-                  font-size: 1.5vw; 
-                  padding-top: 10%; 
-                }
-            }
-    
-        }
-        
-        #box1{
-            background-color: rgb(107, 28, 28);
-            
-        }
-        #box2{
-            background-color: rgb(5, 81, 5);
-        }
-        #box3{
-             background-color: rgb(152, 116, 7);
-        }
-        #box4{
-             background-color: rgb(156, 141, 6);
-        }
-        #box5{
-             background-color: rgb(146, 50, 20);
-        }
-        #box6{
-             background-color: rgb(7, 85, 50);
-        }
-
-        .picture1{
-            background-image: url("../picture/box11.png");
-            @include picture;
-            &::before{
-                content: "";
-                padding: 40%;
-                display: block;
-        
-            }
-        }
-        .picture2{
-            background-image: url("../picture/box12.png");
-            @include picture;
-            &::before{
-                content: "";
-                padding: 40%;
-                display: block;
-        
-            }
-        }
-        .picture3{
-            background-image: url("../picture/box13.png");
-            @include picture;
-            &::before{
-                content: "";
-                padding: 60%;
-                display: block;
-        
-            }
-        }
-        .picture4{
-            background-image: url("../picture/box14.png");
-            @include picture;
-            width: 35%!important;
-            &::before{
-                content: "";
-                padding: 30%;
-                display: block;
-        
-            }
-        }
-        .picture5{
-            background-image: url("../picture/box15.png");
-            @include picture;
-            &::before{
-                content: "";
-                padding: 50%;
-                display: block;
-        
-            }
-        }
-        .picture6{
-            background-image: url("../picture/box16.png");
-
-            @include picture;
-            &::before{
-                content: "";
-                padding: 50%;
-                display: block;
-        
-            }
-        }
-
-    }
-}
-
-footer{
-    width: 100%;
-    height: 100px;
-    background-color: rgb(104, 63, 47);
-    
+header {
+  position: fixed;
+  width: 100%;
+  height: 150px;
+  z-index: 2;
+  animation: logo-appear 5s forwards 6s, logo-move 3s forwards 10s;
+  opacity: 0;
+  .logo {
+    position: absolute;
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50%;
+    margin-top: 3%;
+    font-size: 5vw;
+    color: white;
+  }
+}
+
+main {
+  .hero {
+    position: relative;
+
+    height: 713px;
+    background-size: cover;
+    // background-color: rgb(0, 0, 0, 0.7);
+    overflow: hidden;
+
+    .background {
+      content: "";
+      background-image: url("../picture/catsle.png");
+
+      position: fixed;
+      z-index: -1;
+      width: 100%;
+      height: 713px;
+      &::after {
+        content: "";
+        background-color: rgb(0, 0, 0, 0.7);
+
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 713px;
+      }
+    }
+
+    .load-text {
+      color: white;
+      font-size: 4rem;
+      width: 50%;
+      height: 50%;
+      position: absolute;
+      left: 32%;
+      top: 40%;
+      opacity: 0;
+      animation: load-text 8s;
+    }
+
+    // &::before{
+    //     content:"";
+    //     background-image: url("../picture/catsle.png");
+
+    //     position: absolute;
+    //     z-index: -1;
+    //     width: 100%;
+    //     height: 713px;
+
+    // }
+
+    .picture-flow {
+      display: flex;
+      width: 4000px;
+      position: absolute;
+
+      .flow1 {
+        width: 2000px;
+        height: 648px;
+
+        animation: wallflow1 100s infinite linear -50s both;
+        flex-grow: 1;
+        display: grid;
+        grid-template-columns: repeat(19, 1fr);
+        grid-template-rows: repeat(7, 1fr);
+
+        .picture1 {
+          grid-column: 2/8;
+          grid-row: 3/6;
+          background-image: url("../picture/hero1.jpg");
+          background-size: cover;
+          @include rain1;
+          opacity: 0;
+        }
+        .picture2 {
+          grid-column: 10/13;
+          grid-row: 4/6;
+          background-image: url("../picture/hero3.png");
+          background-size: cover;
+          @include rain1;
+          opacity: 0;
+        }
+        .picture3 {
+          grid-column: 12/16;
+          grid-row: 1/3;
+          background-image: url("../picture/hero4.png");
+          background-size: cover;
+          @include rain1;
+          opacity: 0;
+        }
+        .picture4 {
+          grid-column: 15/19;
+          grid-row: 5/8;
+          background-image: url("../picture/hero5.png");
+          background-size: cover;
+          @include rain1;
+          opacity: 0;
+        }
+      }
+
+      .flow2 {
+        width: 2000px;
+        height: 648px;
+
+        flex-grow: 1;
+        animation: wallflow2 100s infinite linear both;
+        display: grid;
+        grid-template-columns: repeat(19, 1fr);
+        grid-template-rows: repeat(7, 1fr);
+        .picture1 {
+          grid-column: 2/7;
+          grid-row: 2/5;
+          background-image: url("../picture/hero6.png");
+          background-size: cover;
+          @include rain1;
+          opacity: 0;
+        }
+        .picture2 {
+          grid-column: 8/12;
+          grid-row: 5/7;
+          background-image: url("../picture/hero7.png");
+          background-size: cover;
+          @include rain1;
+          opacity: 0;
+        }
+        .picture3 {
+          grid-column: 12/16;
+          grid-row: 1/3;
+          background-image: url("../picture/hero8.png");
+          background-size: cover;
+          @include rain1;
+          opacity: 0;
+        }
+        .picture4 {
+          grid-column: 16/19;
+          grid-row: 5/7;
+          background-image: url("../picture/hero9.png");
+          background-size: cover;
+          @include rain1;
+          opacity: 0;
+        }
+      }
+    }
+
+    .text-flow1 {
+      color: rgb(255, 255, 255, 0.9);
+      position: absolute;
+      display: flex;
+      width: 4000px;
+      .flow1 {
+        width: 2000px;
+        height: 648px;
+        animation: wallflow1 55s infinite linear -27.5s both;
+        flex-grow: 1;
+        overflow: hidden;
+        align-items: center;
+        display: grid;
+        grid-template-columns: repeat(19, 1fr);
+        grid-template-rows: repeat(7, 1fr);
+        .text1 {
+          font-size: 2rem;
+          grid-column: 2/8;
+          grid-row: 3/4;
+          @include rain2;
+          opacity: 0;
+        }
+        .text2 {
+          font-size: 2rem;
+          grid-column: 6/11;
+          grid-row: 7/8;
+          @include rain2;
+          opacity: 0;
+        }
+        .text3 {
+          font-size: 2rem;
+          grid-column: 13/18;
+          grid-row: 2/3;
+          @include rain2;
+          opacity: 0;
+        }
+        .text4 {
+          font-size: 2rem;
+          grid-column: 9/19;
+          grid-row: 4/5;
+          @include rain2;
+          opacity: 0;
+        }
+        .text5 {
+          font-size: 2rem;
+          grid-column: 15/19;
+          grid-row: 6;
+          @include rain2;
+          opacity: 0;
+        }
+      }
+
+      .flow2 {
+        width: 2000px;
+        height: 648px;
+        flex-grow: 1;
+        animation: wallflow2 55s infinite linear both;
+        display: grid;
+        grid-template-columns: repeat(19, 1fr);
+        grid-template-rows: repeat(7, 1fr);
+
+        .text1 {
+          font-size: 2rem;
+          grid-column: 2/9;
+          grid-row: 3/4;
+          @include rain2;
+          opacity: 0;
+        }
+        .text2 {
+          font-size: 2rem;
+          grid-column: 4/10;
+          grid-row: 6/7;
+          opacity: 0;
+          @include rain2;
+        }
+        .text3 {
+          font-size: 2rem;
+          grid-column: 13/19;
+          grid-row: 2/3;
+          opacity: 0;
+          @include rain2;
+        }
+        .text4 {
+          font-size: 2rem;
+          grid-column: 13/16;
+          grid-row: 6/5;
+          opacity: 0;
+          @include rain2;
+        }
+        .text5 {
+          font-size: 2rem;
+          grid-column: 14/19;
+          grid-row: 7/8;
+          opacity: 0;
+          @include rain2;
+        }
+      }
+    }
+
+    .text-flow2 {
+      color: rgb(255, 255, 255);
+      position: absolute;
+      display: flex;
+      width: 4000px;
+      font-family: "japanese";
+
+      .flow1 {
+        width: 2000px;
+        height: 648px;
+        animation: wallflow1 80s infinite linear -40s both;
+        flex-grow: 1;
+        align-items: center;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(19, 1fr);
+        -ms-writing-mode: tb-rl;
+        writing-mode: vertical-rl;
+        .text1 {
+          font-size: 3rem;
+          grid-row: 2/3;
+          grid-column: 2/8;
+          font-family: "japanese";
+          @include rain3;
+          opacity: 0;
+        }
+        .text2 {
+          font-size: 2.5rem;
+          grid-row: 5/6;
+          grid-column: 1/7;
+          font-family: "japanese";
+          @include rain3;
+          opacity: 0;
+        }
+        .text3 {
+          font-size: 4.5rem;
+          grid-row: 9/10;
+          grid-column: 3/8;
+          font-family: "japanese";
+          @include rain3;
+          opacity: 0;
+        }
+        .text4 {
+          font-size: 3rem;
+          grid-row: 13/14;
+          grid-column: 2/8;
+          font-family: "japanese";
+          @include rain3;
+          opacity: 0;
+        }
+        .text5 {
+          font-size: 3rem;
+          grid-row: 17/18;
+          grid-column: 1/8;
+          font-family: "japanese";
+          @include rain3;
+          opacity: 0;
+        }
+      }
+
+      .flow2 {
+        width: 2000px;
+        height: 648px;
+        animation: wallflow2 80s infinite linear both;
+        flex-grow: 1;
+        align-items: center;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(19, 1fr);
+        -ms-writing-mode: tb-rl;
+        writing-mode: vertical-rl;
+        .text1 {
+          font-size: 3.5rem;
+          grid-row: 2/3;
+          grid-column: 3/8;
+          font-family: "japanese";
+          @include rain3;
+          opacity: 0;
+        }
+        .text2 {
+          font-size: 4rem;
+          grid-row: 5/6;
+          grid-column: 1/7;
+          font-family: "japanese";
+          @include rain3;
+          opacity: 0;
+        }
+        .text3 {
+          font-size: 3rem;
+          grid-row: 9/10;
+          grid-column: 2/8;
+          font-family: "japanese";
+          @include rain3;
+          opacity: 0;
+        }
+        .text4 {
+          font-size: 3rem;
+          grid-row: 13/14;
+          grid-column: 1/8;
+          font-family: "japanese";
+          @include rain3;
+          opacity: 0;
+        }
+        .text5 {
+          font-size: 3.5rem;
+          grid-row: 17/18;
+          grid-column: 3/8;
+          font-family: "japanese";
+          @include rain3;
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  .chara-navi {
+    width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
+    @media screen and (max-width: 764px) {
+      margin-bottom: 100px;
+    }
+    .chara1 {
+      opacity: 0;
+      width: 100%;
+      height: 600px;
+    }
+    .chara2 {
+      width: 100%;
+      height: 600px;
+      opacity: 0;
+    }
+    .chara3 {
+      width: 100%;
+      height: 600px;
+      opacity: 0;
+    }
+    .chara4 {
+      width: 100%;
+      height: 600px;
+      opacity: 0;
+    }
+    .chara5 {
+      width: 100%;
+      height: 600px;
+      opacity: 0;
+    }
+
+    div.scroll {
+      @media screen and (max-width: 764px) {
+        height: 300px !important;
+      }
+    }
+    .chara1.scroll {
+      display: flex;
+      width: 100%;
+      height: 600px;
+      animation: comeup 1.5s forwards;
+      color: white;
+
+      .chara-info {
+        @include chara-info;
+      }
+      .chara-picture {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        .picture {
+          position: absolute;
+          background-image: url("../picture/howl.png");
+          background-size: cover;
+          background-position: center;
+          width: 50%;
+          padding-top: 50%;
+          z-index: 2;
+        }
+
+        @include each-chara;
+      }
+    }
+    .chara2.scroll {
+      display: flex;
+      width: 100%;
+      height: 600px;
+      animation: comeup 1.5s forwards;
+      .chara-info {
+        @include chara-info;
+      }
+      .chara-picture {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        .picture {
+          background-image: url("../picture/sophie.png");
+          background-size: cover;
+          background-position: center;
+          width: 50%;
+          padding-top: 50%;
+          position: absolute;
+          z-index: 2;
+        }
+
+        @include each-chara;
+      }
+    }
+    .chara3.scroll {
+      display: flex;
+      width: 100%;
+      height: 600px;
+      animation: comeup 1.5s forwards;
+
+      .chara-info {
+        @include chara-info;
+      }
+      .chara-picture {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        .picture {
+          background-image: url("../picture/fire.png");
+          background-size: cover;
+          background-position: center;
+          width: 50%;
+          padding-top: 50%;
+          z-index: 22;
+        }
+
+        @include each-chara;
+      }
+    }
+    .chara4.scroll {
+      display: flex;
+      width: 100%;
+      height: 600px;
+      animation: comeup 1.5s forwards;
+      .chara-info {
+        @include chara-info;
+      }
+      .chara-picture {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        .picture {
+          background-image: url("../picture/malc.png");
+          background-position: center;
+          background-size: cover;
+          width: 50%;
+          padding-top: 50%;
+          z-index: 2;
+        }
+
+        @include each-chara;
+      }
+    }
+
+    .chara5.scroll {
+      display: flex;
+      width: 100%;
+      height: 600px;
+      animation: comeup 1.5s forwards;
+      .chara-info {
+        @include chara-info;
+      }
+      .chara-picture {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        .picture {
+          background-image: url("../picture/hero5.png");
+          background-size: cover;
+          background-position: center;
+          width: 50%;
+          padding-top: 50%;
+          z-index: 2;
+        }
+
+        @include each-chara;
+      }
+    }
+  }
+
+  .produce {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    @media screen and (min-width: 375px) and (max-width: 768px) {
+      .box {
+        width: 50% !important;
+        .font {
+          .font-title {
+            font-size: 4vw !important;
+          }
+          .font-detail {
+            font-size: 2vw !important;
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 374px) {
+      .box {
+        width: 100% !important;
+
+        .font {
+          .font-title {
+            font-size: 8vw !important;
+          }
+          .font-detail {
+            font-size: 5vw !important;
+          }
+        }
+      }
+    }
+
+    .box {
+      width: 30%;
+      position: relative;
+
+      margin-bottom: 40px;
+      &::before {
+        content: "";
+        padding: 50%;
+        display: block;
+      }
+
+      .picture1 {
+        background-image: url("../picture/box11.png");
+        @include picture;
+      }
+      .picture2 {
+        background-image: url("../picture/box12.png");
+        @include picture;
+      }
+      .picture3 {
+        background-image: url("../picture/box13.png");
+        @include picture;
+      }
+      .picture4 {
+        background-image: url("../picture/box14.png");
+        @include picture;
+      }
+      .picture5 {
+        background-image: url("../picture/box15.png");
+        @include picture;
+      }
+      .picture6 {
+        background-image: url("../picture/box16.png");
+
+        @include picture;
+      }
+
+      .font {
+        color: white;
+        position: absolute;
+        width: 50%;
+        top: 7%;
+        right: 10%;
+        overflow: hidden;
+        .font-title {
+          display: flex;
+          justify-content: center;
+          font-size: 2.5vw;
+        }
+        .font-detail {
+          font-size: 1.5vw;
+          padding-top: 10%;
+        }
+      }
+    }
+
+    #box1 {
+      background-color: rgb(107, 28, 28);
+    }
+    #box2 {
+      background-color: rgb(5, 81, 5);
+    }
+    #box3 {
+      background-color: rgb(152, 116, 7);
+    }
+    #box4 {
+      background-color: rgb(156, 141, 6);
+    }
+    #box5 {
+      background-color: rgb(146, 50, 20);
+    }
+    #box6 {
+      background-color: rgb(7, 85, 50);
+    }
+
+    .picture1 {
+      background-image: url("../picture/box11.png");
+      @include picture;
+      &::before {
+        content: "";
+        padding: 40%;
+        display: block;
+      }
+    }
+    .picture2 {
+      background-image: url("../picture/box12.png");
+      @include picture;
+      &::before {
+        content: "";
+        padding: 40%;
+        display: block;
+      }
+    }
+    .picture3 {
+      background-image: url("../picture/box13.png");
+      @include picture;
+      &::before {
+        content: "";
+        padding: 60%;
+        display: block;
+      }
+    }
+    .picture4 {
+      background-image: url("../picture/box14.png");
+      @include picture;
+      width: 35% !important;
+      &::before {
+        content: "";
+        padding: 30%;
+        display: block;
+      }
+    }
+    .picture5 {
+      background-image: url("../picture/box15.png");
+      @include picture;
+      &::before {
+        content: "";
+        padding: 50%;
+        display: block;
+      }
+    }
+    .picture6 {
+      background-image: url("../picture/box16.png");
+
+      @include picture;
+      &::before {
+        content: "";
+        padding: 50%;
+        display: block;
+      }
+    }
+  }
+}
+
+footer {
+  width: 100%;
+  height: 100px;
+  background-color: rgb(104, 63, 47);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .logos {
+    background-image: url("../picture/kabu.png");
+    background-size: cover;
+    margin-left: 20px;
+    width: 7%;
+    &::before {
+      content: "";
+      padding-top: 100%;
+      display: block;
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 12% !important;
+    }
+    @media screen and (max-width: 374px) {
+      width: 18% !important;
+    }
+  }
+
+  .footer-main {
+    display: flex;
     justify-content: space-between;
 
-    .logos{
-        
-        background-image: url("../picture/kabu.png");
-        background-size: cover;
-        margin-left: 20px;
-        width: 7%;
-        &::before{
-            content: "";
-            padding-top: 100%;
-            display: block;
-    
-        }
+    width: 30%;
+    a {
+      font-size: 1.2vw;
 
-        @media screen and ( max-width:768px){
-            width: 12%!important;
-        }
-        @media screen and ( max-width:374px){
-            width: 18%!important;
-        }
-        
+      text-decoration: none;
+      color: rgb(234, 202, 147);
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
-    .footer-main{
-        display: flex;
-        justify-content: space-between;
-        
-        width: 30%;
-        a{
-            font-size: 1.2vw;
-            
-            text-decoration: none;
-            color: rgb(234, 202, 147);
-            &:hover{
-                text-decoration: underline;
-            }
-        }
-
-        @media screen and ( max-width:768px){
-            flex-direction: column!important;
-            a{
-                padding-bottom: 5%!important;
-            }
-        }
+    @media screen and (max-width: 768px) {
+      flex-direction: column !important;
+      a {
+        padding-bottom: 5% !important;
+      }
     }
+  }
 
-    @media screen and ( max-width:768px){
-        .footer-side{
-            width: 20%!important;
-        }
+  @media screen and (max-width: 768px) {
+    .footer-side {
+      width: 20% !important;
     }
+  }
 
-    .footer-side{
-        margin-right: 10%;
-        display: flex;
-        justify-content: space-around;
-        width: 10%;
-        div{
-            margin-right:7%;
-        }
-        .tuitter{
-            background-image: url("../picture/iwaiwa.png");
-
-            background-size: cover;
-            width: 50%;
-            &::before{
-                content: "";
-                padding: 50%;
-                display: block;
-        
-                }
-        }
-        .insta{
-            background-image: url("../picture/lsd.png");
-            background-size: cover;
-            width: 50%;
-            &::before{
-                content: "";
-                padding: 50%;
-                display: block;
-        
-                }
-        }
-        .line{
-            background-image: url("../picture/line.png");
-            background-size: cover;
-            width: 50%;
-            &::before{
-                content: "";
-                padding: 50%;
-                display: block;
-        
-                }
-        }
+  .footer-side {
+    margin-right: 10%;
+    display: flex;
+    justify-content: space-around;
+    width: 10%;
+    div {
+      margin-right: 7%;
     }
+    .tuitter {
+      background-image: url("../picture/iwaiwa.png");
 
-}
-
-@keyframes wallflow1{
-    0%{
-        transform: translateX(100%);
+      background-size: cover;
+      width: 50%;
+      &::before {
+        content: "";
+        padding: 50%;
+        display: block;
+      }
     }
-    100%{
-        transform: translateX(-100%);
+    .insta {
+      background-image: url("../picture/lsd.png");
+      background-size: cover;
+      width: 50%;
+      &::before {
+        content: "";
+        padding: 50%;
+        display: block;
+      }
     }
-    
-}
-@keyframes wallflow2{
-    0%{
-        transform: translateX(0%);
+    .line {
+      background-image: url("../picture/line.png");
+      background-size: cover;
+      width: 50%;
+      &::before {
+        content: "";
+        padding: 50%;
+        display: block;
+      }
     }
-    100%{
-        transform: translateX(-200%);
-    }
-    
+  }
 }
 
-@keyframes boundX1{
-
-    0%{left:0;}
-    100%{left:95%;}
+@keyframes wallflow1 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
-@keyframes boundX2{
-    
-
-    0%{right:0;}
-    100%{right:95%;}
-}
-@keyframes boundX3{
-    
-    0%{left:0;}
-    100%{left:95%;}
-   
-}
-@keyframes boundX4{
-    
-
-    0%{right:50%;}
-    100%{right:95%;}
-}
-@keyframes boundX5{
-    
-    0%{left:50%;}
-    100%{left:95%;}
-}
-@keyframes boundY1{
-    0%{top: 30%;}
-    33%{top: 20%;}
-    66%{top: 10%;}
-    100%{top: 0;}
-
-    
-}
-@keyframes boundY2{
-    0%{top: 0%;}
-    33%{top: 10%;}
-    66%{top: 30%;}
-    100%{top: 30%;}
-}
-@keyframes boundY3{
-    0%{top: 30%;}
-    33%{top: 20%;}
-    66%{top: 10%;}
-    100%{top: 0;}
-}
-@keyframes boundY4{
-    0%{top: 0%;}
-    33%{top: 10%;}
-    66%{top: 20%;}
-    100%{top: 30%;}
-}
-@keyframes boundY5{
-    0%{top: 30%;}
-    33%{top: 20%;}
-    66%{top: 10%;}
-    100%{top: 0;}
-}
-@keyframes hero1{
-
-    0%{
-        translate:0 -3000%;
-        opacity: 1;
-    }
-    100%{
-        translate:0 0%;
-        opacity: 1;
-    }
-}
-@keyframes hero2{
-
-    0%{
-        translate:0 -300%;
-        opacity: 1;
-    }
-    100%{
-        translate:0 0%;
-        opacity: 1;
-    }
-}
-@keyframes hero3{
-
-    0%{
-        translate:0 -300%;
-        opacity: 1;
-    }
-    100%{
-        translate:0 0%;
-        opacity: 1;
-    }
+@keyframes wallflow2 {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
 }
 
-@keyframes load-text{
-    0%{opacity: 0;}
-    50%{opacity: 1;}
-    100%{opacity: 0;}
+@keyframes boundX1 {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 95%;
+  }
+}
+@keyframes boundX2 {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: 95%;
+  }
+}
+@keyframes boundX3 {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 95%;
+  }
+}
+@keyframes boundX4 {
+  0% {
+    right: 50%;
+  }
+  100% {
+    right: 95%;
+  }
+}
+@keyframes boundX5 {
+  0% {
+    left: 50%;
+  }
+  100% {
+    left: 95%;
+  }
+}
+@keyframes boundY1 {
+  0% {
+    top: 30%;
+  }
+  33% {
+    top: 20%;
+  }
+  66% {
+    top: 10%;
+  }
+  100% {
+    top: 0;
+  }
+}
+@keyframes boundY2 {
+  0% {
+    top: 0%;
+  }
+  33% {
+    top: 10%;
+  }
+  66% {
+    top: 30%;
+  }
+  100% {
+    top: 30%;
+  }
+}
+@keyframes boundY3 {
+  0% {
+    top: 30%;
+  }
+  33% {
+    top: 20%;
+  }
+  66% {
+    top: 10%;
+  }
+  100% {
+    top: 0;
+  }
+}
+@keyframes boundY4 {
+  0% {
+    top: 0%;
+  }
+  33% {
+    top: 10%;
+  }
+  66% {
+    top: 20%;
+  }
+  100% {
+    top: 30%;
+  }
+}
+@keyframes boundY5 {
+  0% {
+    top: 30%;
+  }
+  33% {
+    top: 20%;
+  }
+  66% {
+    top: 10%;
+  }
+  100% {
+    top: 0;
+  }
+}
+@keyframes hero1 {
+  0% {
+    translate: 0 -3000%;
+    opacity: 1;
+  }
+  100% {
+    translate: 0 0%;
+    opacity: 1;
+  }
+}
+@keyframes hero2 {
+  0% {
+    translate: 0 -300%;
+    opacity: 1;
+  }
+  100% {
+    translate: 0 0%;
+    opacity: 1;
+  }
+}
+@keyframes hero3 {
+  0% {
+    translate: 0 -300%;
+    opacity: 1;
+  }
+  100% {
+    translate: 0 0%;
+    opacity: 1;
+  }
+}
+
+@keyframes load-text {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes logo-appear {
-    0%{
-        opacity: 0;
-        margin-top: 250px;
-
-    }
-    100%{
-        opacity: 1;
-        margin-top: 250px;
-    }
+  0% {
+    opacity: 0;
+    margin-top: 250px;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 250px;
+  }
 }
 
-@keyframes logo-move{
-    0%{
-        margin-top: 250px;
-    }
-    100%{
-        margin-top: 0;
-        
-    }
+@keyframes logo-move {
+  0% {
+    margin-top: 250px;
+  }
+  100% {
+    margin-top: 0;
+  }
 }
 
-@keyframes comeup{
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opacity: 1;
-    }
+@keyframes comeup {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-
-
-
-
-
